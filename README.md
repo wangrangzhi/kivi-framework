@@ -1,5 +1,5 @@
 # kivi-framework
-Kivi-framework是基于Spring Boot封装的一个Java开发框架，本框架既包括了：pom文件、配置文件、Freemarker模板、AOP、Mvc、Swagger2、RESTful API、事务配置等Spring Boot的基本功能，同时也包括了：Druid、MyBatis、Dubbo、Redis、Ehcache、RabbitMq、Shiro、Spring-Batch等常用组件的集成。
+Kivi-framework是基于Spring Boot封装的一个Java开发框架，本框架既包括了：pom文件、配置文件、Freemarker模板、AOP、Mvc、Swagger2、RESTful API、事务配置等Spring Boot的基本功能，同时也包括了：Druid、MyBatis、Dubbo、Redis、Ehcache、RabbitMq、Shiro、Spring-Batch等常用组件的集成。</br>
 工程结构：
 ├── kivi-admin-server               Actuator端点的监控Server
 ├── kivi-framework-actuator         Actuator功能封装模块
