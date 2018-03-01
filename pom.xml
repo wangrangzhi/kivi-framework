@@ -7,7 +7,8 @@
   <name>kivi-framework</name>
   <description>kivi-framework -parent project for Spring Boot</description>
   <modules>
-  	
+
+  <module>framework-common</module>
   </modules>
   
   <parent>
