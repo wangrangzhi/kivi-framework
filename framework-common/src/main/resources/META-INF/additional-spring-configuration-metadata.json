@@ -1,0 +1,274 @@
+{
+  "groups": [{
+    "name": "framework",
+    "type": "com.kivi.framework.properties.KiviProperties",
+    "sourceType": "com.kivi.framework.properties.KiviProperties"
+  }],
+  "properties": [
+  	{
+      "name": "framework.config-file",
+      "type": "java.lang.String",
+      "description": "framework 属性文件路径",
+      "defaultValue": "classpath:framework-dft.properties"
+    },
+    {
+      "name": "framework.common.error-mapping-file-pattern",
+      "type": "java.lang.String",
+      "description": "framework错误码初始化配置文件查找匹配表达式",
+      "defaultValue": "classpath*:error-mapping-*.properties"
+    },
+    {
+      "name": "framework.common.component-scan",
+      "type": "java.lang.String",
+      "description": "Spring Component扫描包，支持通配符，多个扫描包使用','分隔",
+      "defaultValue": "com.kivi"
+    },
+    {
+      "name": "framework.common.tx-advice-required",
+      "type": "java.lang.String",
+      "description": "PROPAGATION_REQUIRED：尝试加入已经存在的事务中，如果没有则开启一个新的事务",
+      "defaultValue": "insert*,update*,delete*,save*"
+    },
+    {
+      "name": "framework.common.tx-advice-supports",
+      "type": "java.lang.String",
+      "description": "PROPAGATION_SUPPORTS：当前没有事务存在，就以非事务方式执行；如果有，就使用当前事务。",
+      "defaultValue": "find*,get*,query*,list*"
+    },
+    {
+      "name": "framework.common.tx-advice-not-supported",
+      "type": "java.lang.String",
+      "description": "PROPAGATION_NOT_SUPPORTED：如果存在事务则将这个事务挂起，并使用新的数据库连接。新的数据库连接不使用事务",
+      "defaultValue": "log*"
+    },
+    {
+      "name": "framework.common.tx-pointcut-expression",
+      "type": "java.lang.String",
+      "description": "事物切面表达式，如：execution (* com.framework..service.*.*(..))",
+      "defaultValue": "execution (* com..service.*.*(..))"
+    },
+    {
+      "name": "framework.common.muti-datasource-open",
+      "type": "java.lang.Boolean",
+      "description": "是否开启多datasource",
+      "defaultValue": false
+    },
+    {
+      "name": "framework.cache.expiration",
+      "type": "java.lang.Integer",
+      "description": "缓存过期时间，单位：秒,默认值：3600",
+      "defaultValue": 3600
+    },
+    {
+      "name": "framework.swagger.enabled",
+      "type": "java.lang.Boolean",
+      "description": "swagger功能是否开启，默认开启",
+      "defaultValue": true
+    },
+    {
+      "name": "framework.swagger.title",
+      "type": "java.lang.String",
+      "description": "swagger文档标题"
+    },
+    {
+      "name": "framework.swagger.description",
+      "type": "java.lang.String",
+      "description": "swagger文档说明文字"
+    },
+    {
+      "name": "framework.swagger.authorization-enabled",
+      "type": "java.lang.Boolean",
+      "description": "swagger API访问是否启用认证机制",
+      "defaultValue": true
+    },
+    {
+      "name": "framework.swagger.terms-of-service-url",
+      "type": "java.lang.String",
+      "description": "服务条款URL"
+    },
+    {
+      "name": "framework.swagger.verison",
+      "type": "java.lang.String",
+      "description": "swagger文档版本号",
+      "defaultValue": "1.0.0"
+    },
+    {
+      "name": "framework.shiro.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用shiro认证",
+      "defaultValue": true
+    },
+    {
+      "name": "framework.shiro.session-validation-interval",
+      "type": "java.lang.Long",
+      "description": "shiro session失效检查时间(毫秒)",
+      "defaultValue": 900000
+    },
+    {
+      "name": "framework.shiro.session-timeout",
+      "type": "java.lang.Long",
+      "description": "shiro session超时时间(毫秒)",
+      "defaultValue": 3600000
+    },
+    {
+      "name": "framework.shiro.remember-me-cookie-ttl",
+      "type": "java.lang.Long",
+      "description": "记住密码cookie时间(秒)，86400/每天",
+      "defaultValue": 86400
+    },
+    {
+      "name": "framework.shiro.type",
+      "type": "com.framework.constant.enums.shiro.ShiroAuthType",
+      "description": "shiro认证方式(session,token)，支持多种认证方式，中间以逗号隔开"
+    },
+    {
+      "name": "framework.shiro.filters.anon",
+      "type": "java.lang.String",
+      "description": "匿名访问的url过滤器，多个url间以逗号隔开",
+       "defaultValue": "/index,/kaptcha,/**/login,/**/reg,/**/forget,/**/passReset,/favicon.ico,/api/auth"
+    },
+    {
+      "name": "framework.shiro.filters.logout",
+      "type": "java.lang.String",
+      "description": "退出url过滤器",
+       "defaultValue": "/**/logout"
+    },
+    {
+      "name": "framework.shiro.filters.admin",
+      "type": "java.lang.String",
+      "description": "需要管理员权限访问的url过滤器，多个url间以逗号隔开",
+       "defaultValue": "/console/**"
+    },
+    {
+      "name": "framework.shiro.filters.user",
+      "type": "java.lang.String",
+      "description": "需要用户权限访问的url过滤器，多个url间以逗号隔开",
+       "defaultValue": "/member/**"
+    },
+    {
+      "name": "framework.shiro.filters.token",
+      "type": "java.lang.String",
+      "description": "需要token认证的访问url过滤器，多个url间以逗号隔开",
+       "defaultValue": "/api/**"
+    },
+    {
+      "name": "framework.shiro.token.auth-type",
+      "type": "com.framework.constant.enums.shiro.TokenAuthType",
+      "description": "token认证的类型，uuid，jwt,jwt_ra",
+      "defaultValue": jwt
+    },
+    {
+      "name": "framework.shiro.token.ttl",
+      "type": "java.lang.Long",
+      "description": "token存活时间，单位秒",
+      "defaultValue": 1800
+    },
+    {
+      "name": "framework.shiro.token.jwt.issuer",
+      "type": "java.lang.String",
+      "description": "jwt发行方",
+      "defaultValue": kivi
+    },
+    {
+      "name": "framework.shiro.token.jwt.secret-seed",
+      "type": "java.lang.String",
+      "description": "jwt密钥种子",
+      "defaultValue": kivi.jwt
+    },
+    {
+      "name": "framework.shiro.token.jwt.sign-alg",
+      "type": "io.jsonwebtoken.SignatureAlgorithm",
+      "description": "jwt签名算法",
+      "defaultValue": HS256,
+      "sourceType": "io.jsonwebtoken.SignatureAlgorithm"
+    },
+    {
+      "name": "framework.shiro.forward.unauthorized",
+      "type": "java.lang.String",
+      "description": "认证未通过重定向url",
+      "defaultValue": "/html/403.html"
+    },
+    {
+      "name": "framework.shiro.forward.admin-login",
+      "type": "java.lang.String",
+      "description": "管理员默认登陆url",
+      "defaultValue": "/console/login"
+    },
+    {
+      "name": "framework.shiro.forward.admin-success",
+      "type": "java.lang.String",
+      "description": "管理员默认登录成功url",
+      "defaultValue": "/console/index"
+    },
+    {
+      "name": "framework.shiro.forward.user-login",
+      "type": "java.lang.String",
+      "description": "用户默认登陆url",
+      "defaultValue": "/member/login"
+    },
+    {
+      "name": "framework.shiro.forward.user-success",
+      "type": "java.lang.String",
+      "description": "用户默认登录成功url",
+      "defaultValue": "/member/index"
+    },
+    {
+      "name": "framework.redisson.enabled",
+      "type": "java.lang.Boolean",
+      "description": "redisson是否启用，默认：true",
+      "defaultValue": true
+    },
+    {
+      "name": "framework.redisson.config-file",
+      "type": "java.lang.String",
+      "description": "redisson配置文件路径"
+    },
+    {
+      "name": "framework.dubbo.application.name",
+      "type": "java.lang.String",
+      "description": "当前应用名称，用于注册中心计算应用间依赖关系，注意：消费者和提供者应用名不要一样，此参数不是匹配条件，你当前项目叫什么名字就填什么",
+      "defaultValue": "${spring.application.name}"
+    },
+    {
+      "name": "framework.dubbo.registry.protocol",
+      "type": "java.lang.String",
+      "description": "注同中心地址协议，支持dubbo, http, local三种协议，分别表示，dubbo地址，http地址，本地注册中心",
+      "defaultValue": "dubbo"
+    },
+    {
+      "name": "framework.dubbo.registry.address",
+      "type": "java.lang.String",
+      "description": "注册中心服务器地址，如果地址没有端口缺省为9090，同一集群内的多个地址用逗号分隔，如：ip:port,ip:port"
+    },
+    {
+      "name": "framework.dubbo.protocol.name",
+      "type": "java.lang.String",
+      "description": "协议名称，可选协议：dubbo, rmi, http和hessian",
+      "defaultValue": "dubbo"
+    },
+    {
+      "name": "framework.dubbo.protocol.port",
+      "type": "java.lang.Integer",
+      "description": "dubbo服务端口，dubbo协议缺省端口为20880，rmi协议缺省端口为1099，http和hessian协议缺省端口为80；如果配置为-1 或者 没有配置port，则会分配一个没有被占用的端口。Dubbo 2.4.0+，分配的端口在协议缺省端口的基础上增长，确保端口段可控。",
+      "defaultValue": 20880
+    },
+    {
+      "name": "framework.dubbo.protocol.threadpool",
+      "type": "java.lang.String",
+      "description": "线程池类型，可选：fixed/cached。2.0.5以上版本",
+      "defaultValue": "fixed"
+    },
+    {
+      "name": "framework.dubbo.protocol.threads",
+      "type": "java.lang.Integer",
+      "description": "服务线程池大小(固定大小)，2.0.5以上版本",
+      "defaultValue": 100
+    },
+    {
+      "name": "framework.dubbo-file",
+      "type": "java.lang.String",
+      "description": "dubbo属性文件",
+      "defaultValue": "classpath:dubbo.properties"
+    }
+  ]
+}
