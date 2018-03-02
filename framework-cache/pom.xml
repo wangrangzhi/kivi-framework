@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.kivi</groupId>
+    <artifactId>framework-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>framework-cache</artifactId>
+  <description>Spring Boot 缓存的集成</description>
+  <dependencies>
+  		<!-- kivi -->
+  		<dependency>
+       		<groupId>com.kivi</groupId>
+       		<artifactId>framework-common</artifactId>
+       		<version>1.0.0</version>
+       		<exclusions>
+				<exclusion>
+					<groupId>org.apache.poi</groupId>
+					<artifactId>poi-ooxml</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+       	</dependency>
+       <!-- /kivi -->
+  
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- ehcache 缓存 -->
+	    <dependency>
+	        <groupId>net.sf.ehcache</groupId>
+	        <artifactId>ehcache</artifactId>
+	    </dependency>
+	    <!-- /ehcache 缓存 -->
+	    
+	    <dependency>
+        	<groupId>org.redisson</groupId>
+        	<artifactId>redisson</artifactId>
+        	<version>2.7.2</version>
+        	<exclusions>
+        		<exclusion>
+        			<groupId>org.slf4j</groupId>
+        			<artifactId>slf4j-api</artifactId>
+        		</exclusion>
+        		<exclusion>
+        			<groupId>com.fasterxml.jackson.core</groupId>
+        			<artifactId>jackson-databind</artifactId>
+        		</exclusion>
+        		<exclusion>
+        			<groupId>com.fasterxml.jackson.core</groupId>
+        			<artifactId>jackson-core</artifactId>
+        		</exclusion>
+        	</exclusions>
+        </dependency>
+	    
+  </dependencies>
+</project>
