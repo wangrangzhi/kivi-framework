@@ -2,7 +2,7 @@ package com.kivi.framework.constant;
 
 public interface KiviFramework {
     /**
-     * Jyt框架属性文件
+     * KTF框架属性文件
      */
     public static final String FRAMWORK_PLACEHOLDER = "${framework.config-file}";
 

@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 import com.kivi.framework.constant.Constant;
 import com.kivi.framework.constant.GlobalErrorConst;
-import com.kivi.framework.properties.KiviProperties;
+import com.kivi.framework.properties.KtfProperties;
 import com.kivi.framework.service.ErrorCodeService;
 import com.kivi.framework.util.kit.CollectionKit;
 import com.kivi.framework.util.kit.StrKit;
@@ -42,7 +42,7 @@ import com.kivi.framework.util.kit.StrKit;
  * 3、修改错误码：上线前，修改属性文件；上线后：通过系统管理接口——错误码更新完成；
  * 
  * 实现过程： 一、启动时 1、从CLASSPATH中加载满足error-mapping-*.properties命名的全部错误码属性文件，放入错误码map；
- * 2、从数据表JTF_ERROR_CODE中读取全部错误码，覆盖错误码map，以保证错误码的描述与数据库同步；
+ * 2、从数据表KTF_ERROR_CODE中读取全部错误码，覆盖错误码map，以保证错误码的描述与数据库同步；
  * 3、同步错误码，将属性文件中新增的错误码更新到数据库。
  * 
  * 二、更新时 1、当需要更新错误码的说明信息时，通过setIsNeedLoad函数修改数据库加载标识状态，从数据库表中加载最新的错误码描述信息。
@@ -128,9 +128,9 @@ public class ErrorKit {
     private Map<String, String[]> loadFromProperties() {
         Map<String, String[]> result = new HashMap<>();
         String errorMappingFilePattern = "classpath*:error-mapping-*.properties";
-        KiviProperties jtfProperties = SpringContextHolder.getBean(KiviProperties.class);
-        if (jtfProperties != null)
-            errorMappingFilePattern = jtfProperties.getCommon().getErrorMappingFilePattern();
+        KtfProperties ktfProperties = SpringContextHolder.getBean(KtfProperties.class);
+        if (ktfProperties != null)
+            errorMappingFilePattern = ktfProperties.getCommon().getErrorMappingFilePattern();
 
         log.info("错误码属性文件加载路径：{}", errorMappingFilePattern);
 

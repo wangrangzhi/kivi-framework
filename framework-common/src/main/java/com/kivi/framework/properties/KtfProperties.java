@@ -19,14 +19,14 @@ import lombok.Setter;
 @Setter
 @Configuration
 @ConfigurationProperties( prefix = "framework" )
-public class KiviProperties {
+public class KtfProperties {
     private Common  common;
     private Cache   cache;
     private Dubbo   dubbo;
     private Swagger swagger;
     private Shiro   shiro;
 
-    public KiviProperties() {
+    public KtfProperties() {
         this.common = new Common();
         this.cache = new Cache();
         this.dubbo = new Dubbo();
@@ -38,7 +38,7 @@ public class KiviProperties {
     @Setter
     public static class Common {
         private String errorMappingFilePattern = "classpath*:error-mapping-*.properties";
-        private String componentScan           = "com.jyt";
+        private String componentScan           = "com.kivi";
         private String txPointcutExpression;
         private String txAdviceRequired        = "insert*,update*,delete*,save*,modify*,add*";
         private String txAdviceSupports        = "find*,get*,query*,list*,select*";
@@ -110,8 +110,8 @@ public class KiviProperties {
             @Getter
             @Setter
             public static class Jwt {
-                private String                             issuer     = "jytpay";
-                private String                             secretSeed = "jytpay.jwt";
+                private String                             issuer     = "kivi";
+                private String                             secretSeed = "kivi.jwt";
                 private io.jsonwebtoken.SignatureAlgorithm signAlg    = SignatureAlgorithm.HS256;
             }
         }
