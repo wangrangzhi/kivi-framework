@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.kivi</groupId>
+    <artifactId>framework-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>framework-web</artifactId>
+  <description>Spring Boot Web项目基础框架模块</description>
+  <dependencies>
+  		<!-- kivi -->
+  		<dependency>
+       		<groupId>com.kivi</groupId>
+       		<artifactId>framework-common</artifactId>
+       		<version>1.0.0</version>
+       		<exclusions>
+				<exclusion>
+					<groupId>org.apache.poi</groupId>
+					<artifactId>poi-ooxml</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+       	</dependency>
+  		<!-- /kivi -->
+        <!-- spring starter web -->
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>    
+		  <groupId>org.springframework</groupId>    
+		  <artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+		
+		
+		<!-- swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox-swagger2-version}</version>
+		</dependency>
+		<!-- /swagger2 -->
+		
+  </dependencies>
+</project>
