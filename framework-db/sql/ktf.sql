@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2018-03-02 14:55:17
+Date: 2018-03-05 17:39:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `ktf_dept`;
 CREATE TABLE `ktf_dept` (
   `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `num` int(11) DEFAULT NULL COMMENT '排序',
-  `pid` int(11) DEFAULT NULL COMMENT '父部门id',
+  `pid` bigint(11) unsigned DEFAULT NULL COMMENT '父部门id',
   `pids` varchar(255) DEFAULT NULL COMMENT '父级ids',
   `simplename` varchar(45) DEFAULT NULL COMMENT '简称',
   `fullname` varchar(255) DEFAULT NULL COMMENT '全称',
@@ -44,7 +44,7 @@ DROP TABLE IF EXISTS `ktf_dict`;
 CREATE TABLE `ktf_dict` (
   `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `num` int(11) DEFAULT NULL COMMENT '排序',
-  `pid` int(11) DEFAULT NULL COMMENT '父级字典',
+  `pid` bigint(11) unsigned DEFAULT NULL COMMENT '父级字典',
   `name` varchar(255) DEFAULT NULL COMMENT '名称',
   `tips` varchar(255) DEFAULT NULL COMMENT '提示',
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
@@ -224,8 +224,8 @@ CREATE TABLE `ktf_role` (
 DROP TABLE IF EXISTS `ktf_role_resource`;
 CREATE TABLE `ktf_role_resource` (
   `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `role_id` int(11) DEFAULT NULL COMMENT '角色id',
-  `resource_id` int(11) DEFAULT NULL COMMENT '菜单id',
+  `role_id` bigint(11) unsigned DEFAULT NULL COMMENT '角色id',
+  `resource_id` bigint(11) unsigned DEFAULT NULL COMMENT '菜单id',
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_update` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -288,8 +288,8 @@ CREATE TABLE `ktf_user` (
 DROP TABLE IF EXISTS `ktf_user_role`;
 CREATE TABLE `ktf_user_role` (
   `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` int(11) DEFAULT NULL COMMENT '用户id',
-  `role_id` int(11) DEFAULT NULL COMMENT '角色id',
+  `user_id` bigint(11) unsigned DEFAULT NULL COMMENT '用户id',
+  `role_id` bigint(11) unsigned DEFAULT NULL COMMENT '角色id',
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_update` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)

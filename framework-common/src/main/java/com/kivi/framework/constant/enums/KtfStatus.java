@@ -1,9 +1,9 @@
 package com.kivi.framework.constant.enums;
 
-public enum KStatus {
+public enum KtfStatus {
 	ENABLED(0, "enabled"), LOCKED(1, "locked"), DISABLED(2, "disabled"), PROCESSING(2, "processing"), INIT(9, "init");
 
-	private KStatus(int code, String desc) {
+	private KtfStatus(int code, String desc) {
 		this.code = code;
 		this.desc = desc;
 	}
@@ -16,7 +16,7 @@ public enum KStatus {
         if (status == null) {
             return "";
         } else {
-            for (KStatus s : KStatus.values()) {
+            for (KtfStatus s : KtfStatus.values()) {
                 if (s.code == status) {
                     return s.desc;
                 }
