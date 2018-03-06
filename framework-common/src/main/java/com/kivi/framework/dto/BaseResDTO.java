@@ -16,7 +16,7 @@ import lombok.Setter;
 @ApiModel( value = "BaseResBean", description = "服务方法返回基础bean" )
 @Setter
 @Getter
-public class BaseResBean implements Serializable {
+public class BaseResDTO implements Serializable {
 
     /**
      * 

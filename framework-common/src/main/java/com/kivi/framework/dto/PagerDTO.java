@@ -9,7 +9,7 @@ import java.util.List;
  * Bean类 - 分页
  */
 
-public class Pager implements Serializable{
+public class PagerDTO implements Serializable{
 
 	/**
 	 * 
