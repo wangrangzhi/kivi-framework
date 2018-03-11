@@ -7,4 +7,41 @@
   </parent>
   <artifactId>framework-dubbo</artifactId>
   <description>Kivi框架的dubbo集成模块</description>
+  <dependencies>
+	<!-- <dependency>
+	    <groupId>com.gitee.reger</groupId>
+	    <artifactId>spring-boot-starter-dubbo</artifactId>
+	    <version>1.0.9</version>
+	</dependency> -->
+	<dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>dubbo</artifactId>
+	    <version>2.5.8</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.101tec</groupId>
+	    <artifactId>zkclient</artifactId>
+	    <version>0.10</version>
+	    <exclusions>
+	    	<exclusion>
+	    		<groupId>org.apache.zookeeper</groupId>
+	    		<artifactId>zookeeper</artifactId>
+	    	</exclusion>
+	    </exclusions>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.zookeeper</groupId>
+	    <artifactId>zookeeper</artifactId>
+	    <version>3.4.10</version>
+	    <type>pom</type>
+	    <exclusions>
+	    	<exclusion>
+	    		<groupId>log4j</groupId>
+	    		<artifactId>log4j</artifactId>
+	    	</exclusion>
+	    </exclusions>
+	</dependency>
+	
+  </dependencies>
 </project>
