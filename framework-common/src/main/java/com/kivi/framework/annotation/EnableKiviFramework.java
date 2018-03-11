@@ -13,7 +13,7 @@ import com.kivi.framework.constant.KiviFramework;
 @Target( ElementType.TYPE )
 @Retention( RetentionPolicy.RUNTIME )
 @PropertySource( value = { KiviFramework.FRAMWORK_PLACEHOLDER, KiviFramework.DUBBO_PLACEHOLDER } )
-@ComponentScan( basePackages = { KiviFramework.BasePackages.COMPONENT_SCAN } )
+@ComponentScan( basePackages = { KiviFramework.BasePackages.KTF_COMPONENT_SCAN, KiviFramework.BasePackages.COMPONENT_SCAN } )
 public @interface EnableKiviFramework {
 
 }
