@@ -15,12 +15,12 @@
     <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
   </resultMap>
   
-  <select id="insertBatch" parameterType="java.util.List">
-  		<selectKey resultType ="java.lang.Integer" keyProperty= "id"
- 4                  order= "AFTER">
- 5                 SELECT LAST_INSERT_ID()
- 6      </selectKey >
-		insert into KTF_ERROR_CODE (id, ERR_CODE, ERR_ALIAS, ERR_DESC,ERR_TIP,ERR_GROUP,gmt_create,gmt_update)
+  <insert id="insertBatch" parameterType="java.util.List">
+  		<selectKey resultType ="java.lang.Integer" keyProperty= "id" order= "AFTER">
+  		          SELECT LAST_INSERT_ID()
+        </selectKey>
+		insert into KTF_ERROR_CODE (ERR_CODE, ERR_ALIAS, ERR_DESC,ERR_TIP,ERR_GROUP,gmt_create,gmt_update)
+		values
 		<foreach collection="list" item="item" index="index" separator=",">
 		   (
 				#{item.errCode,jdbcType=VARCHAR},
@@ -32,7 +32,7 @@
 				#{item.gmtUpdate,jdbcType=TIMESTAMP}
 			)
 		</foreach>
-	</select >
+	</insert>
 
 	
 </mapper>
