@@ -7,54 +7,55 @@ import org.springframework.stereotype.Repository;
 import com.kivi.framework.db.page.PageInfoKtf;
 import com.kivi.framework.vo.page.PageReqVO;
 
-
 /**
  * 通用接口
  */
 @Repository
 public interface IDao<T> {
 
-	T selectByKey(Object key);
+    T selectByKey( Object key );
 
-	T save(T entity);
-	
-	T saveNotNull(T entity);
+    T save( T entity );
 
-	int delete(Object key);
+    T saveNotNull( T entity );
 
-	T updateAll(T entity);
+    int delete( Object key );
 
-	T updateNotNull(T entity);
+    T updateAll( T entity );
 
-	/**
-	 * 根据条件查询
-	 * 
-	 * @param example
-	 * @return
-	 */
-	List<T> selectByExample(Object example);
+    T updateNotNull( T entity );
 
-	/**
-	 * 根据条件查询
-	 * 
-	 * @param entity
-	 * @return
-	 */
-	List<T> selectByEntity(T entity);
+    int updateNotNull( T condEntity, T updateEntity );
 
-	/**
-	 * 查询总数量
-	 * 
-	 * @return
-	 */
-	int count(T entity);
+    /**
+     * 根据条件查询
+     * 
+     * @param example
+     * @return
+     */
+    List<T> selectByExample( Object example );
 
-	int count();
-	
-	/**
-	 * 分页查询
-	 * 
-	 * @return
-	 */
-	PageInfoKtf<T> selectByPage(T entity, PageReqVO pageReq);
+    /**
+     * 根据条件查询
+     * 
+     * @param entity
+     * @return
+     */
+    List<T> selectByEntity( T entity );
+
+    /**
+     * 查询总数量
+     * 
+     * @return
+     */
+    int count( T entity );
+
+    int count();
+
+    /**
+     * 分页查询
+     * 
+     * @return
+     */
+    PageInfoKtf<T> selectByPage( T entity, PageReqVO pageReq );
 }

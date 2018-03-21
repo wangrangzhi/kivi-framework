@@ -30,6 +30,7 @@ public abstract class BaseDao<T> implements IDao<T> {
     private Class<T>            entityClass;
 
     private ThreadLocal<T>      entityLocal = new ThreadLocal<T>() {
+                                                @Override
                                                 protected T initialValue() {
                                                     T obj = null;
                                                     try {
@@ -124,6 +125,25 @@ public abstract class BaseDao<T> implements IDao<T> {
             throw new DaoException("更新数据异常：" + e.getMessage());
         }
         return entity;
+    }
+
+    @Override
+    public int updateNotNull( T condEntity, T updateEntity ) {
+        Map<String, Object> map = BeanKit.beanToMap(condEntity);
+
+        Example example = new Example(entityClass);
+        Example.Criteria criteria = example.createCriteria();
+
+        Iterator<Entry<String, Object>> it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Entry<String, Object> entry = it.next();
+            if (ObjectKit.isEmpty(entry.getValue()))
+                continue;
+            criteria.andEqualTo(entry.getKey(), entry.getValue());
+        }
+        int row = mapper.updateByExampleSelective(updateEntity, example);
+
+        return row;
     }
 
     @Override

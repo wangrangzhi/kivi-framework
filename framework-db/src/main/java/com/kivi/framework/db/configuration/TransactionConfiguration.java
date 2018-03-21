@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource;
 import org.springframework.transaction.interceptor.RollbackRuleAttribute;
 import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
@@ -20,6 +21,7 @@ import com.kivi.framework.properties.KtfProperties;
 import com.kivi.framework.util.kit.StrKit;
 
 @Configuration
+@EnableTransactionManagement
 public class TransactionConfiguration {
     private static final int TX_METHOD_TIMEOUT = -1;
 

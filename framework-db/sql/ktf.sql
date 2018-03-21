@@ -337,3 +337,22 @@ BEGIN
 END
 ;;
 DELIMITER ;
+
+
+-- ----------------------------
+-- Table structure for ktf_name_service
+-- ----------------------------
+DROP TABLE IF EXISTS `ktf_name_service`;
+CREATE TABLE `ktf_name_service` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `sid` varchar(64) DEFAULT NULL COMMENT 'service唯一标签',
+  `name` varchar(255) DEFAULT NULL COMMENT 'service名字',
+  `host` varchar(32) DEFAULT NULL COMMENT '主机IP',
+  `port` int(255) unsigned DEFAULT NULL COMMENT '端口',
+  `uri` varchar(255) DEFAULT NULL COMMENT '服务地址',
+  `biz_type` varchar(32) DEFAULT NULL COMMENT '业务类型',
+  `status` varchar(2) DEFAULT NULL COMMENT '状态，00：离线 01：在线',
+  `gmt_create` datetime DEFAULT NULL,
+  `gmt_update` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

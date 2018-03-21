@@ -19,7 +19,7 @@ import com.kivi.framework.util.kit.CollectionKit;
 import com.kivi.framework.util.kit.DateTime;
 import com.kivi.framework.util.kit.DateTimeKit;
 
-@Service( value = "errorCodeService" )
+@Service( "errorCodeService" )
 public class ErrorCodeServiceImpl extends BaseDao<KtfErrorCode> implements ErrorCodeService {
     private static final Logger  log = LoggerFactory.getLogger(ErrorCodeServiceImpl.class);
 

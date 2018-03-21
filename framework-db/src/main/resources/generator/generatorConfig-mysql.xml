@@ -34,7 +34,12 @@
                              type="XMLMAPPER">
         </javaClientGenerator>
 
-       <table tableName="ktf_error_code">
+        <table tableName="ktf_error_code">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+             <columnOverride column="gmt_%" javaType="java.util.Date"
+                jdbcType="TIMESTAMP"></columnOverride>
+        </table>
+        <table tableName="ktf_service_name">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
              <columnOverride column="gmt_%" javaType="java.util.Date"
                 jdbcType="TIMESTAMP"></columnOverride>
