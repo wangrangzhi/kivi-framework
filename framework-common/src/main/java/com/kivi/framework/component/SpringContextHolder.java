@@ -3,6 +3,8 @@ package com.kivi.framework.component;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Order( value = Ordered.HIGHEST_PRECEDENCE )
 public class SpringContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
@@ -33,6 +36,11 @@ public class SpringContextHolder implements ApplicationContextAware {
     public static <T> T getBean( Class<T> requiredType ) {
         assertApplicationContext();
         return applicationContext.getBean(requiredType);
+    }
+
+    public static boolean containsBean( String beanName ) {
+        assertApplicationContext();
+        return applicationContext.containsBean(beanName);
     }
 
     private static void assertApplicationContext() {

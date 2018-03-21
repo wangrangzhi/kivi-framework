@@ -1,10 +1,17 @@
 package com.kivi.framework.serialize;
 
-public class TestBean {
+import java.io.Serializable;
 
-    String code;
+public class TestBean implements Serializable {
 
-    String message;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    String                    code;
+
+    String                    message;
 
     public TestBean() {
         this.code = "S00000";

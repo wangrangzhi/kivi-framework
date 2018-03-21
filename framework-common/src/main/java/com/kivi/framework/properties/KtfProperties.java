@@ -43,6 +43,7 @@ public class KtfProperties {
         private String txAdviceRequired        = "insert*,update*,delete*,save*,modify*,add*";
         private String txAdviceSupports        = "find*,get*,query*,list*,select*";
         private String txAdviceNotSupported    = "log*";
+        private String sidDir                  = "/tmp/sid";
     }
 
     @Getter

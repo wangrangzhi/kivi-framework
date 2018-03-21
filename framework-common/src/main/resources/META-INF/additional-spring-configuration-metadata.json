@@ -12,6 +12,12 @@
       "defaultValue": "classpath:framework-dft.properties"
     },
     {
+      "name": "framework.common.sid-dir",
+      "type": "java.lang.String",
+      "description": "应用服务sid文件的保存路径",
+      "defaultValue": "/tmp/sid"
+    },
+    {
       "name": "framework.common.error-mapping-file-pattern",
       "type": "java.lang.String",
       "description": "framework错误码初始化配置文件查找匹配表达式",

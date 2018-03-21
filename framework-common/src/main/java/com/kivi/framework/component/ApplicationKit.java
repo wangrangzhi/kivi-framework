@@ -9,8 +9,11 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 import com.kivi.framework.exception.ToolBoxException;
+import com.kivi.framework.util.kit.StrKit;
+
 /**
  * 应用帮助类，主要用于获取SpringBoot应用的相关信息
+ * 
  * @author Eric
  *
  */
@@ -40,7 +43,9 @@ public class ApplicationKit {
     }
 
     public String getAppcationName() {
-        return applicationContext.getApplicationName();
+        String name = applicationContext.getApplicationName();
+        name = StrKit.removePrefix(name, "/");
+        return name;
     }
 
     public Resource[] getResources( String locationPattern ) {
