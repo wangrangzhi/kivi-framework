@@ -13,16 +13,7 @@
        		<groupId>com.kivi</groupId>
        		<artifactId>framework-common</artifactId>
        		<version>1.0.0</version>
-       		<exclusions>
-				<exclusion>
-					<groupId>org.apache.poi</groupId>
-					<artifactId>poi-ooxml</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.httpcomponents</groupId>
-					<artifactId>httpclient</artifactId>
-				</exclusion>
-			</exclusions>
+			<optional>true</optional>
        	</dependency>
        <!-- /kivi -->
   

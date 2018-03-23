@@ -33,6 +33,7 @@ public class StrKit {
     public static final String COMMA          = ",";
     public static final String AND            = "&";
     public static final String VERTICAL_BAR   = "|";
+    public static final String HYPHEN         = "-";
 
     public static final String HTML_NBSP      = "&nbsp;";
     public static final String HTML_AMP       = "&amp";
