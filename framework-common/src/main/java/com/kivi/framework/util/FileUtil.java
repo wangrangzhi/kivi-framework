@@ -6,7 +6,6 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.regex.Pattern;
 
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
@@ -34,16 +33,23 @@ public class FileUtil {
         }
 
         File[] files = dir.listFiles(new FilenameFilter() {
-            private Pattern pattern = Pattern.compile(filter);
+            // private Pattern pattern = Pattern.compile(filter);
 
             @Override
             public boolean accept( File dir, String name ) {
-                return pattern.matcher(name).matches();
+                // return pattern.matcher(name).matches();
+                if (name.endsWith(filter)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
 
         });
 
         return files;
+
     }
 
     /**

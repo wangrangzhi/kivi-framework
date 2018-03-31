@@ -71,7 +71,9 @@ public class ErrorKit {
 
     public static ErrorKit me() {
 
-        return SpringContextHolder.getBean(ErrorKit.class);
+        ErrorKit bean = SpringContextHolder.getBeanNoAssert(ErrorKit.class);
+
+        return bean != null ? bean : new ErrorKit();
     }
 
     public void setIsNeedLoad( boolean isLoad ) {

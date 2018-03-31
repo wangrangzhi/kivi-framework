@@ -28,7 +28,7 @@ public class BaseReqDTO implements Serializable {
                        notes = "请求流水号",
                        example = "" )
     private String            tranSeqId;
-    
+
     /** 交易代码 */
     @ApiModelProperty(
                        value = "交易代码",
@@ -37,7 +37,7 @@ public class BaseReqDTO implements Serializable {
                        notes = "交易代码",
                        example = "" )
     private String            tranCode;
-    
+
     /** 交易时间 */
     @ApiModelProperty(
                        value = "交易时间，格式:yyyymmddHHMMSS",
@@ -45,7 +45,7 @@ public class BaseReqDTO implements Serializable {
                        dataType = "String",
                        notes = "交易时间，格式:yyyymmddHHMMSS",
                        example = "20180306165501" )
-    private String           trantime ;
+    private String            trantime;
 
     /** 接口版本 */
     @ApiModelProperty(
@@ -53,16 +53,15 @@ public class BaseReqDTO implements Serializable {
                        required = false,
                        dataType = "String",
                        notes = "接口版本 ",
-                       example = "" )
+                       example = "1.0.0" )
     private String            version;
-    
-    
+
     /** 签名 */
     @ApiModelProperty(
-            value = "接口请求签名",
-            required = false,
-            dataType = "String",
-            example = "" )
+                       value = "接口请求签名",
+                       required = false,
+                       dataType = "String",
+                       example = "" )
     private String            sign;
 
 }
