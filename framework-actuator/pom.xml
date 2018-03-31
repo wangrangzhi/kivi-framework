@@ -37,5 +37,24 @@
 		    <artifactId>spring-boot-admin-starter-client</artifactId>
 		    <version>${spring-boot-admin-server.version}</version>
 		</dependency>
+		
+		 <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+			<version>1.0.4.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>
+						spring-cloud-starter-archaius
+					</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-netflix-core</artifactId>
+				</exclusion>
+			</exclusions>
+        </dependency>
+		
   </dependencies>
 </project>
