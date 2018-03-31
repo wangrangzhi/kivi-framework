@@ -16,12 +16,12 @@ import com.kivi.framework.cache.CacheKit;
 import com.kivi.framework.component.SpringContextHolder;
 import com.kivi.framework.constant.enums.KtfStatus;
 import com.kivi.framework.util.Convert;
+import com.kivi.framework.vo.web.UserVO;
 import com.kivi.framework.web.constant.factory.ConstantFactory;
 import com.kivi.framework.web.shiro.cache.ShiroRedisCacheManager;
 import com.kivi.framework.web.shiro.token.helper.ITokenCache;
 import com.kivi.framework.web.shiro.token.helper.TokenCacheFactory;
 import com.kivi.framework.web.shiro.vo.ShiroUserVO;
-import com.kivi.framework.web.vo.UserVO;
 
 @Component
 @ConditionalOnProperty(prefix = "framework.shiro", name = "enabled", havingValue = "true", matchIfMissing = false)

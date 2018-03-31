@@ -155,15 +155,11 @@ public class KtfShiroConfiguration {
         return realm;
     }
 
-    @Bean
-    public EnterpriseCacheSessionDAO sessionDAO( CacheProperties cacheProperties,
+    @Bean( name = "sessionDAO" )
+    @ConditionalOnProperty( name = { "spring.cache.type" }, havingValue = "redis", matchIfMissing = false )
+    public EnterpriseCacheSessionDAO sessionDAORedis( CacheProperties cacheProperties,
             KtfProperties ktfProperties, RedisTemplate<String, Object> redisTemplate ) {
-        if (cacheProperties.getType().compareTo(CacheType.EHCACHE) == 0) {
-            EnterpriseCacheSessionDAO sessionDAO = new EnterpriseCacheSessionDAO();
-            sessionDAO.setCacheManager(ShiroFactroy.me().getShiroCacheManager());
-            return sessionDAO;
-        }
-        else if (cacheProperties.getType().compareTo(CacheType.REDIS) == 0) {
+        if (cacheProperties.getType().compareTo(CacheType.REDIS) == 0) {
             ShiroRedisSessionDAO redisSessionDAO = new ShiroRedisSessionDAO(redisTemplate);
             redisSessionDAO.setExpireTime(ktfProperties.getShiro().getSessionTimeout());
             return redisSessionDAO;
@@ -171,18 +167,51 @@ public class KtfShiroConfiguration {
         return null;
     }
 
+    @Bean( name = "sessionDAO" )
+    @ConditionalOnProperty( name = { "spring.cache.type" }, havingValue = "ehcache", matchIfMissing = false )
+    public EnterpriseCacheSessionDAO sessionDAOEhcache( CacheProperties cacheProperties ) {
+        if (cacheProperties.getType().compareTo(CacheType.EHCACHE) == 0) {
+            EnterpriseCacheSessionDAO sessionDAO = new EnterpriseCacheSessionDAO();
+            sessionDAO.setCacheManager(ShiroFactroy.me().getShiroCacheManager());
+            return sessionDAO;
+        }
+
+        return null;
+    }
+
     /**
      * @see DefaultWebSessionManager
      * @return
      */
+    @ConditionalOnProperty( name = { "spring.cache.type" }, havingValue = "redis", matchIfMissing = false )
     @Bean( name = "sessionManager" )
-    public DefaultWebSessionManager defaultWebSessionManager( CacheProperties cacheProperties,
+    public DefaultWebSessionManager defaultWebSessionManagerRedis( CacheProperties cacheProperties,
             KtfProperties ktfProperties,
             RedisTemplate<String, Object> redisTemplate ) {
         logger.debug("创建session管理器");
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
 
-        sessionManager.setSessionDAO(sessionDAO(cacheProperties, ktfProperties, redisTemplate));
+        sessionManager.setSessionDAO(sessionDAORedis(cacheProperties, ktfProperties, redisTemplate));
+        sessionManager.setCacheManager(ShiroFactroy.me().getShiroCacheManager());
+        sessionManager.setSessionValidationInterval(ktfProperties.getShiro().getSessionValidationInterval());
+        sessionManager.setGlobalSessionTimeout(ktfProperties.getShiro().getSessionTimeout());
+        sessionManager.setDeleteInvalidSessions(true);
+        sessionManager.setSessionValidationSchedulerEnabled(true);
+        Cookie cookie = new SimpleCookie(ShiroHttpSession.DEFAULT_SESSION_ID_NAME);
+        cookie.setName("KTF.SHIRO.ID");
+        cookie.setHttpOnly(true);
+        sessionManager.setSessionIdCookie(cookie);
+        return sessionManager;
+    }
+
+    @ConditionalOnProperty( name = { "spring.cache.type" }, havingValue = "ehcache", matchIfMissing = false )
+    @Bean( name = "sessionManager" )
+    public DefaultWebSessionManager defaultWebSessionManagerEhcache( CacheProperties cacheProperties,
+            KtfProperties ktfProperties ) {
+        logger.debug("创建session管理器");
+        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+
+        sessionManager.setSessionDAO(sessionDAOEhcache(cacheProperties));
         sessionManager.setCacheManager(ShiroFactroy.me().getShiroCacheManager());
         sessionManager.setSessionValidationInterval(ktfProperties.getShiro().getSessionValidationInterval());
         sessionManager.setGlobalSessionTimeout(ktfProperties.getShiro().getSessionTimeout());
@@ -214,8 +243,50 @@ public class KtfShiroConfiguration {
      * @param statelessRealm
      * @return
      */
+    @ConditionalOnProperty( name = { "spring.cache.type" }, havingValue = "ehcache", matchIfMissing = false )
     @Bean
-    public DefaultWebSecurityManager defaultWebSecurityManager( CookieRememberMeManager rememberMeManager,
+    public DefaultWebSecurityManager defaultWebSecurityManagerEhcache( CookieRememberMeManager rememberMeManager,
+            DefaultWebSessionManager sessionManager, StatelessRealm statelessRealm ) {
+        logger.info("创建 DefaultWebSecurityManager");
+        DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
+
+        Map<String, Object> shiroAuthenticatorRealms = new HashMap<>();
+
+        StateAuthRealm adminShiroRealm = adminShiroRealm();
+        StateAuthRealm clientShiroRealm = clientShiroRealm();
+
+        shiroAuthenticatorRealms.put("adminShiroRealm", adminShiroRealm);
+        shiroAuthenticatorRealms.put("clientShiroRealm", clientShiroRealm);
+        shiroAuthenticatorRealms.put("statelessRealm", statelessRealm);
+
+        Collection<Realm> shiroAuthorizerRealms = new ArrayList<Realm>();
+        shiroAuthorizerRealms.add(adminShiroRealm);
+        shiroAuthorizerRealms.add(clientShiroRealm);
+        shiroAuthorizerRealms.add(statelessRealm);
+
+        CustomModularRealmAuthenticator customModularRealmAuthenticator = new CustomModularRealmAuthenticator();
+        customModularRealmAuthenticator.setDefinedRealms(shiroAuthenticatorRealms);
+        customModularRealmAuthenticator.setAuthenticationStrategy(authenticationStrategy());
+        manager.setAuthenticator(customModularRealmAuthenticator);
+
+        ModularRealmAuthorizer customModularRealmAuthorizer = new ModularRealmAuthorizer();
+        customModularRealmAuthorizer.setRealms(shiroAuthorizerRealms);
+        customModularRealmAuthorizer.setPermissionResolver(new UrlPermissionResovler());
+        manager.setAuthorizer(customModularRealmAuthorizer);
+
+        // 注入缓存管理器;
+        manager.setCacheManager(ShiroFactroy.me().getShiroCacheManager());// 这个如果执行多次，也是同样的一个对象;
+
+        manager.setSessionManager(sessionManager);
+        manager.setRememberMeManager(rememberMeManager);
+        // 设置了SecurityManager采用使用SecurityUtils的静态方法 获取用户等
+        SecurityUtils.setSecurityManager(manager);
+        return manager;
+    }
+
+    @ConditionalOnProperty( name = { "spring.cache.type" }, havingValue = "redis", matchIfMissing = false )
+    @Bean
+    public DefaultWebSecurityManager defaultWebSecurityManagerRedis( CookieRememberMeManager rememberMeManager,
             DefaultWebSessionManager sessionManager, StatelessRealm statelessRealm ) {
         logger.info("创建 DefaultWebSecurityManager");
         DefaultWebSecurityManager manager = new DefaultWebSecurityManager();

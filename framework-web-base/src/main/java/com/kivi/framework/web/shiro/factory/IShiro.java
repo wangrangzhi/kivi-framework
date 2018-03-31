@@ -2,8 +2,8 @@ package com.kivi.framework.web.shiro.factory;
 
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 
+import com.kivi.framework.vo.web.UserVO;
 import com.kivi.framework.web.shiro.vo.ShiroUserVO;
-import com.kivi.framework.web.vo.UserVO;
 
 /**
  * 定义shirorealm所需数据的接口

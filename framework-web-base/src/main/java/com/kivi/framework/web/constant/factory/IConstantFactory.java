@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.kivi.framework.persist.model.KtfDict;
-import com.kivi.framework.web.vo.UserVO;
+import com.kivi.framework.vo.web.UserVO;
 
 /**
  * 常量生产工厂的接口

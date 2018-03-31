@@ -30,7 +30,7 @@ import com.kivi.framework.util.Convert;
 import com.kivi.framework.util.kit.CollectionKit;
 import com.kivi.framework.util.kit.ObjectKit;
 import com.kivi.framework.util.kit.StrKit;
-import com.kivi.framework.web.vo.UserVO;
+import com.kivi.framework.vo.web.UserVO;
 
 import tk.mybatis.mapper.entity.Example;
 

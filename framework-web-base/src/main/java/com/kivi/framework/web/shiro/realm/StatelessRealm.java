@@ -14,13 +14,13 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import com.kivi.framework.util.kit.ObjectKit;
+import com.kivi.framework.vo.web.UserVO;
 import com.kivi.framework.web.shiro.factory.IShiro;
 import com.kivi.framework.web.shiro.factory.ShiroFactroy;
 import com.kivi.framework.web.shiro.token.StatelessToken;
 import com.kivi.framework.web.shiro.token.manager.TokenManager;
 import com.kivi.framework.web.shiro.util.ShiroKit;
 import com.kivi.framework.web.shiro.vo.ShiroUserVO;
-import com.kivi.framework.web.vo.UserVO;
 
 import lombok.Getter;
 import lombok.Setter;
