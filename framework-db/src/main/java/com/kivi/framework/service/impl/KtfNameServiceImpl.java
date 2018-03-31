@@ -115,7 +115,8 @@ public class KtfNameServiceImpl extends BaseDao<KtfServiceName> implements KtfNa
 
     @Override
     public int index() {
-        List<Short> list = ktfServiceNameMapperEx.listServiceIndex(serviceName.getName());
+        String name = serviceName.getName();
+        List<Short> list = ktfServiceNameMapperEx.listServiceSlotId(name);
         int pos = list.indexOf(serviceName.getSlotId());
         return pos;
     }
