@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kivi.framework.persist.dao.KtfNoticeMapper">
+  <resultMap id="BaseResultMap" type="com.kivi.framework.persist.model.KtfNotice">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="TYPE" jdbcType="DECIMAL" property="type" />
+    <result column="GMT_CREATE" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="GMT_UPDATE" jdbcType="TIMESTAMP" property="gmtUpdate" />
+    <result column="CREATER" jdbcType="DECIMAL" property="creater" />
+    <result column="CONTENT" jdbcType="CLOB" property="content" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kivi.framework.persist.dao.KtfDeptMapper">
+  <resultMap id="BaseResultMap" type="com.kivi.framework.persist.model.KtfDept">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="NUM" jdbcType="DECIMAL" property="num" />
+    <result column="PID" jdbcType="DECIMAL" property="pid" />
+    <result column="PIDS" jdbcType="VARCHAR" property="pids" />
+    <result column="SIMPLENAME" jdbcType="VARCHAR" property="simplename" />
+    <result column="FULLNAME" jdbcType="VARCHAR" property="fullname" />
+    <result column="TIPS" jdbcType="VARCHAR" property="tips" />
+    <result column="GMT_CREATE" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="GMT_UPDATE" jdbcType="TIMESTAMP" property="gmtUpdate" />
+    <result column="VERSION" jdbcType="DECIMAL" property="version" />
+  </resultMap>
+</mapper>
