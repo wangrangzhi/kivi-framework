@@ -23,7 +23,7 @@
     <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   
-  <select id="selectUserRoels" parameterType="Long" resultMap="Long">
+  <select id="selectUserRoels" parameterType="Long" resultType="Long">
   		select role_id 
   		from jtf_user_role
   		where user_id=#{id}
