@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.kivi</groupId>
+    <artifactId>framework-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>framework-admin-server</artifactId>
+  
+  <dependencies>
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>de.codecentric</groupId>
+		    <artifactId>spring-boot-admin-starter-client</artifactId>
+		    <version>${spring-boot-admin-server.version}</version>
+		</dependency>
+  		
+  		<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-server -->
+		<dependency>
+		    <groupId>de.codecentric</groupId>
+		    <artifactId>spring-boot-admin-server</artifactId>
+		    <version>${spring-boot-admin-server.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server-ui</artifactId>
+            <version>${spring-boot-admin-server.version}</version>
+        </dependency>
+         <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server-ui-login</artifactId>
+            <version>${spring-boot-admin-server.version}</version>
+        </dependency>
+        
+		 <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+			<version>1.0.4.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>
+						spring-cloud-starter-archaius
+					</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-netflix-core</artifactId>
+				</exclusion>
+			</exclusions>
+        </dependency>
+		
+  </dependencies>
+  
+</project>
