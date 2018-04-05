@@ -5,21 +5,21 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <id column="ID" jdbcType="DECIMAL" property="id" />
     <result column="AVATAR" jdbcType="VARCHAR" property="avatar" />
     <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
     <result column="SALT" jdbcType="VARCHAR" property="salt" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="BIRTHDAY" jdbcType="TIMESTAMP" property="birthday" />
-    <result column="SEX" jdbcType="DECIMAL" property="sex" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
     <result column="EMAIL" jdbcType="VARCHAR" property="email" />
     <result column="PHONE" jdbcType="VARCHAR" property="phone" />
-    <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
-    <result column="DEPT_ID" jdbcType="DECIMAL" property="deptId" />
+    <result column="ROLE_ID" jdbcType="NUMBER" property="roleId" />
+    <result column="DEPT_ID" jdbcType="NUMBER" property="deptId" />
     <result column="STATUS" jdbcType="DECIMAL" property="status" />
     <result column="GMT_CREATE" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="GMT_UPDATE" jdbcType="TIMESTAMP" property="gmtUpdate" />
-    <result column="VERSION" jdbcType="DECIMAL" property="version" />
+    <result column="VERSION" jdbcType="NUMBER" property="version" />
   </resultMap>
 </mapper>

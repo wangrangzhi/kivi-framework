@@ -14,6 +14,11 @@
        		<version>1.0.0</version>
        		<optional>true</optional>
        	</dependency>
+       	<dependency>
+       		<groupId>com.kivi</groupId>
+       		<artifactId>framework-db</artifactId>
+       		<version>1.0.0</version>
+       	</dependency>
        	
        <!-- oracle jdbc驱动 -->
 		<dependency>  

@@ -5,9 +5,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
-    <result column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
-    <result column="RESOURCE_ID" jdbcType="DECIMAL" property="resourceId" />
+    <id column="ID" jdbcType="NUMBER" property="id" />
+    <result column="ROLE_ID" jdbcType="NUMBER" property="roleId" />
+    <result column="RESOURCE_ID" jdbcType="NUMBER" property="resourceId" />
     <result column="GMT_CREATE" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="GMT_UPDATE" jdbcType="TIMESTAMP" property="gmtUpdate" />
   </resultMap>

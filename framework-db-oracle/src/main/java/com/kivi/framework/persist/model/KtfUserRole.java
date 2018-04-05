@@ -1,6 +1,5 @@
 package com.kivi.framework.persist.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -8,14 +7,14 @@ import javax.persistence.*;
 public class KtfUserRole {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,yyyymmdd)||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
+    private Long id;
 
     @Column(name = "USER_ID")
-    private BigDecimal userId;
+    private Long userId;
 
     @Column(name = "ROLE_ID")
-    private BigDecimal roleId;
+    private Long roleId;
 
     @Column(name = "GMT_CREATE")
     private Date gmtCreate;
@@ -26,42 +25,42 @@ public class KtfUserRole {
     /**
      * @return ID
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * @return USER_ID
      */
-    public BigDecimal getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
     /**
      * @param userId
      */
-    public void setUserId(BigDecimal userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
     /**
      * @return ROLE_ID
      */
-    public BigDecimal getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
     /**
      * @param roleId
      */
-    public void setRoleId(BigDecimal roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 

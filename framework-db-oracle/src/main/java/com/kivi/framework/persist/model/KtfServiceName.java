@@ -1,6 +1,5 @@
 package com.kivi.framework.persist.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -8,8 +7,8 @@ import javax.persistence.*;
 public class KtfServiceName {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,yyyymmdd)||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
+    private Long id;
 
     @Column(name = "SID")
     private String sid;
@@ -21,7 +20,7 @@ public class KtfServiceName {
     private String host;
 
     @Column(name = "PORT")
-    private BigDecimal port;
+    private Integer port;
 
     @Column(name = "URI")
     private String uri;
@@ -30,10 +29,10 @@ public class KtfServiceName {
     private String bizType;
 
     @Column(name = "SLOT_ID")
-    private BigDecimal slotId;
+    private Short slotId;
 
     @Column(name = "STATUS")
-    private BigDecimal status;
+    private String status;
 
     @Column(name = "GMT_CREATE")
     private Date gmtCreate;
@@ -44,14 +43,14 @@ public class KtfServiceName {
     /**
      * @return ID
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -100,14 +99,14 @@ public class KtfServiceName {
     /**
      * @return PORT
      */
-    public BigDecimal getPort() {
+    public Integer getPort() {
         return port;
     }
 
     /**
      * @param port
      */
-    public void setPort(BigDecimal port) {
+    public void setPort(Integer port) {
         this.port = port;
     }
 
@@ -142,28 +141,28 @@ public class KtfServiceName {
     /**
      * @return SLOT_ID
      */
-    public BigDecimal getSlotId() {
+    public Short getSlotId() {
         return slotId;
     }
 
     /**
      * @param slotId
      */
-    public void setSlotId(BigDecimal slotId) {
+    public void setSlotId(Short slotId) {
         this.slotId = slotId;
     }
 
     /**
      * @return STATUS
      */
-    public BigDecimal getStatus() {
+    public String getStatus() {
         return status;
     }
 
     /**
      * @param status
      */
-    public void setStatus(BigDecimal status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

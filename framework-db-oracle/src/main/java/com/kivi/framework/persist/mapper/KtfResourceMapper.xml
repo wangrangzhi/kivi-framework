@@ -5,14 +5,14 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <id column="ID" jdbcType="NUMBER" property="id" />
     <result column="CODE" jdbcType="VARCHAR" property="code" />
     <result column="PCODE" jdbcType="VARCHAR" property="pcode" />
     <result column="PCODES" jdbcType="VARCHAR" property="pcodes" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="ICON" jdbcType="VARCHAR" property="icon" />
     <result column="URL" jdbcType="VARCHAR" property="url" />
-    <result column="NUM" jdbcType="DECIMAL" property="num" />
+    <result column="NUM" jdbcType="NUMBER" property="num" />
     <result column="LEVELS" jdbcType="DECIMAL" property="levels" />
     <result column="IS_MENU" jdbcType="DECIMAL" property="isMenu" />
     <result column="TIPS" jdbcType="VARCHAR" property="tips" />

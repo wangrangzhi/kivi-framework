@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <id column="ID" jdbcType="NUMBER" property="id" />
     <result column="ERR_CODE" jdbcType="VARCHAR" property="errCode" />
     <result column="ERR_ALIAS" jdbcType="VARCHAR" property="errAlias" />
     <result column="ERR_DESC" jdbcType="VARCHAR" property="errDesc" />

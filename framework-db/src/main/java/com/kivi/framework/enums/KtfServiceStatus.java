@@ -1,7 +1,7 @@
 package com.kivi.framework.enums;
 
 public enum KtfServiceStatus {
-    offline( "00", "离" ),
+    offline( "00", "离线" ),
     online( "01", "在线" );
 
     private String code;

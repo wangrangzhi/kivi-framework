@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kivi.framework.persist.mapper.KtfResourceMapperEx">
+  <resultMap id="BaseResultMap" type="com.kivi.framework.persist.model.KtfResource">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="pcode" jdbcType="VARCHAR" property="pcode" />
+    <result column="pcodes" jdbcType="VARCHAR" property="pcodes" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="levels" jdbcType="INTEGER" property="levels" />
+    <result column="is_menu" jdbcType="INTEGER" property="isMenu" />
+    <result column="tips" jdbcType="VARCHAR" property="tips" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_open" jdbcType="INTEGER" property="isOpen" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
+  </resultMap>
+  
+  
+    <select id="listUserResources" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+        SELECT re.id,re.code,re.PCODE,re.PCODES,re.name,re.icon,re.URL,re.levels,re.IS_MENU,
+               re.TIPS,re.STATUS,re.IS_OPEN,re.CREATE_TIME,re.UPDATE_TIME
+        FROM JTF_RESOURCE re LEFT JOIN JTF_ROLE_RESOURCE rr
+        ON re.id = rr.resource_id
+        LEFT JOIN JTF_USER_ROLE ur
+        ON rr.role_id =ur.role_id
+        WHERE ur.user_id=#{userId}
+        <if test="isMenu != null">
+            AND re.IS_MENU= #{isMenu}
+        </if>
+        GROUP BY re.id
+        ORDER BY re.sort ASC
+    </select>
+
+    <select id="listRoleResources" parameterType="Long" resultMap="BaseResultMap">
+        SELECT re.id,re.code,re.PCODE,re.PCODES,re.name,re.icon,re.URL,re.levels,re.IS_MENU,
+               re.TIPS,re.STATUS,re.IS_OPEN,re.CREATE_TIME,re.UPDATE_TIME,
+		(CASE WHEN EXISTS(SELECT 1
+		FROM JTF_ROLE_RESOURCE rr WHERE rr.resource_id=re.id AND rr.role_id=#{rid})
+		THEN 'true' ELSE 'false' END) AS checked
+		FROM JTF_RESOURCE re
+		WHERE re.parent_id !=0
+		ORDER BY re.sort ASC
+    </select>
+    
+    <select id="listResourceNameByIds" parameterType="java.util.List" resultType="String">
+	  	SELECT name 
+	  	FROM jtf_resource
+	  	WHERE id IN
+	  		<foreach collection="ids" index="index" item="item" open="(" separator="," close=")">  
+	        	#{item}  
+	    	</foreach>
+	</select>
+  
+</mapper>

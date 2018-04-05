@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kivi.framework.persist.mapper.KtfRoleMapperEx">
+  <resultMap id="BaseResultMap" type="com.kivi.framework.persist.model.KtfRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="tips" jdbcType="VARCHAR" property="tips" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  
+   <select id="listRoleByUserId" parameterType="Long" resultMap="BaseResultMap">
+  	SELECT r.id,r.NUM, r.PID, r.NAME, r.DEPT_ID,r.TIPS, r.CREATE_TIME,r.UPDATE_TIME,r.VERSION
+    FROM jtf_role r, jtf_user_role ur 
+    WHERE ur.user_id= #{id} AND ur.role_Id = r.id
+  </select>
+
+  
+  <select id="listRoleWithSelected" parameterType="Long" resultMap="BaseResultMap">
+    SELECT r.id,r.NUM, r.PID, r.NAME, r.DEPT_ID,r.TIPS, r.CREATE_TIME,r.UPDATE_TIME,r.VERSION,r.checked,
+    (CASE WHEN (SELECT ur.role_id FROM jtf_user_role ur WHERE ur.user_id= #{id} AND ur.role_Id = r.id) THEN 1 ELSE 0 END) AS checked
+    FROM jtf_role r
+  </select>
+  
+  <select id="listRoleNameByIds" parameterType="java.util.List" resultType="String">
+  	SELECT name 
+  	FROM jtf_role
+  	WHERE id IN
+  		<foreach collection="ids" index="index" item="item" open="(" separator="," close=")">  
+        	#{item}  
+    	</foreach>
+  </select>
+</mapper>

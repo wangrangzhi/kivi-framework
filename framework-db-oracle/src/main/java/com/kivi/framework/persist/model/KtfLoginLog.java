@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class KtfLoginLog {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,yyyymmddhh24miss)||SEQ_ktf_login_log.NEXTVAL AS ID FROM DUAL")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,'yyyymmddhh24miss')||SEQ_ktf_login_log.NEXTVAL AS ID FROM DUAL")
+    private Long id;
 
     @Column(name = "LOG_NAME")
     private String logName;
@@ -37,14 +37,14 @@ public class KtfLoginLog {
     /**
      * @return ID
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

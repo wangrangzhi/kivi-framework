@@ -1,6 +1,5 @@
 package com.kivi.framework.persist.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -8,8 +7,8 @@ import javax.persistence.*;
 public class KtfUser {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,yyyymmdd)||SEQ_ktf_user.NEXTVAL AS ID FROM DUAL")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_ktf_user.NEXTVAL AS ID FROM DUAL")
+    private Long id;
 
     @Column(name = "AVATAR")
     private String avatar;
@@ -30,7 +29,7 @@ public class KtfUser {
     private Date birthday;
 
     @Column(name = "SEX")
-    private BigDecimal sex;
+    private String sex;
 
     @Column(name = "EMAIL")
     private String email;
@@ -39,13 +38,13 @@ public class KtfUser {
     private String phone;
 
     @Column(name = "ROLE_ID")
-    private BigDecimal roleId;
+    private Long roleId;
 
     @Column(name = "DEPT_ID")
-    private BigDecimal deptId;
+    private Long deptId;
 
     @Column(name = "STATUS")
-    private BigDecimal status;
+    private Short status;
 
     @Column(name = "GMT_CREATE")
     private Date gmtCreate;
@@ -54,19 +53,19 @@ public class KtfUser {
     private Date gmtUpdate;
 
     @Column(name = "VERSION")
-    private BigDecimal version;
+    private Integer version;
 
     /**
      * @return ID
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -157,14 +156,14 @@ public class KtfUser {
     /**
      * @return SEX
      */
-    public BigDecimal getSex() {
+    public String getSex() {
         return sex;
     }
 
     /**
      * @param sex
      */
-    public void setSex(BigDecimal sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -199,42 +198,42 @@ public class KtfUser {
     /**
      * @return ROLE_ID
      */
-    public BigDecimal getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
     /**
      * @param roleId
      */
-    public void setRoleId(BigDecimal roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
     /**
      * @return DEPT_ID
      */
-    public BigDecimal getDeptId() {
+    public Long getDeptId() {
         return deptId;
     }
 
     /**
      * @param deptId
      */
-    public void setDeptId(BigDecimal deptId) {
+    public void setDeptId(Long deptId) {
         this.deptId = deptId;
     }
 
     /**
      * @return STATUS
      */
-    public BigDecimal getStatus() {
+    public Short getStatus() {
         return status;
     }
 
     /**
      * @param status
      */
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Short status) {
         this.status = status;
     }
 
@@ -269,14 +268,14 @@ public class KtfUser {
     /**
      * @return VERSION
      */
-    public BigDecimal getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
     /**
      * @param version
      */
-    public void setVersion(BigDecimal version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 }

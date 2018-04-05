@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <id column="ID" jdbcType="DECIMAL" property="id" />
     <result column="LOG_NAME" jdbcType="VARCHAR" property="logName" />
     <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
     <result column="SUCCEED" jdbcType="VARCHAR" property="succeed" />

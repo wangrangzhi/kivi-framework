@@ -25,6 +25,19 @@
                         userId="${spring.datasource.username}"
                         password="${spring.datasource.password}">
         </jdbcConnection>
+        
+        <!-- java类型处理器 用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
+                               注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型； --> 
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl"> 
+             <!-- true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型 
+                  false： 默认, scale>0;length>18：使用BigDecimal; 
+                              scale=0;length[10,18]：使用Long； 
+                              scale=0;length[5,9]：使用Integer； 
+                              scale=0;length<5：使用Short； --> 
+             <property name="forceBigDecimals" value="false"/> 
+       </javaTypeResolver>
+
+
 
         <javaModelGenerator targetPackage="com.kivi.framework.persist.model" targetProject="src/main/java"/>
 
@@ -36,33 +49,53 @@
 
         
         <table tableName="ktf_%">
-            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL" type="pre"/>
+            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,''yyyymmdd'')||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL" type="pre"/>
              <columnOverride column="gmt_%" javaType="java.util.Date"
                 jdbcType="TIMESTAMP"></columnOverride>
+             <columnOverride column="ID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="PID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="VERSION" javaType="java.lang.Integer" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="NUM" javaType="java.lang.Integer" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="DEPT_ID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="ROLE_ID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="USER_ID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="RESOURCE_ID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
         </table>
         
+        <table tableName="KTF_SERVICE_NAME">
+            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,''yyyymmdd'')||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL" type="pre"/>
+             <columnOverride column="gmt_%" javaType="java.util.Date"  jdbcType="TIMESTAMP"></columnOverride>
+             <columnOverride column="PORT" javaType="java.lang.Integer" jdbcType="INTEGER"></columnOverride>
+             <columnOverride column="SLOT_ID" javaType="java.lang.Short" jdbcType="NUMBER"></columnOverride>    
+        </table>
+        
+        
+        
         <table tableName="ktf_ktf_notice">
-            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,'yyyymmddhh24miss')||SEQ_ktf_notice.NEXTVAL AS ID FROM DUAL" type="pre"/>
+            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,''yyyymmddhh24miss'')||SEQ_ktf_notice.NEXTVAL AS ID FROM DUAL" type="pre"/>
              <columnOverride column="gmt_%" javaType="java.util.Date"
                 jdbcType="TIMESTAMP"></columnOverride>
         </table>
         
         <table tableName="ktf_login_log">
-            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,'yyyymmddhh24miss')||SEQ_ktf_login_log.NEXTVAL AS ID FROM DUAL" type="pre"/>
+            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,''yyyymmddhh24miss'')||SEQ_ktf_login_log.NEXTVAL AS ID FROM DUAL" type="pre"/>
              <columnOverride column="gmt_%" javaType="java.util.Date"
                 jdbcType="TIMESTAMP"></columnOverride>
         </table>
         
         <table tableName="ktf_operation_log">
-            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,'yyyymmddhh24miss')||SEQ_ktf_operation_log.NEXTVAL AS ID FROM DUAL" type="pre"/>
+            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,''yyyymmddhh24miss'')||SEQ_ktf_operation_log.NEXTVAL AS ID FROM DUAL" type="pre"/>
             <columnOverride column="gmt_%" javaType="java.util.Date"
                 jdbcType="TIMESTAMP"></columnOverride>
         </table>
         
         <table tableName="ktf_user">
-            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_ktf_user.NEXTVAL AS ID FROM DUAL" type="pre"/>
+            <generatedKey column="id" sqlStatement="SELECT TO_CHAR(sysdate,''yyyymmdd'')||SEQ_ktf_user.NEXTVAL AS ID FROM DUAL" type="pre"/>
             <columnOverride column="gmt_%" javaType="java.util.Date"
                 jdbcType="TIMESTAMP"></columnOverride>
+            <columnOverride column="VERSION" javaType="java.lang.Integer" jdbcType="NUMBER"></columnOverride>
+            <columnOverride column="DEPT_ID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
+             <columnOverride column="ROLE_ID" javaType="java.lang.Long" jdbcType="NUMBER"></columnOverride>
         </table>
         
         

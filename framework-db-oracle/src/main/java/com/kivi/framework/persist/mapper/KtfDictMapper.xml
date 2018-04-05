@@ -5,9 +5,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
-    <result column="NUM" jdbcType="DECIMAL" property="num" />
-    <result column="PID" jdbcType="DECIMAL" property="pid" />
+    <id column="ID" jdbcType="NUMBER" property="id" />
+    <result column="NUM" jdbcType="NUMBER" property="num" />
+    <result column="PID" jdbcType="NUMBER" property="pid" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="TIPS" jdbcType="VARCHAR" property="tips" />
     <result column="GMT_CREATE" jdbcType="TIMESTAMP" property="gmtCreate" />

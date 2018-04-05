@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <id column="ID" jdbcType="NUMBER" property="id" />
     <result column="TITLE" jdbcType="VARCHAR" property="title" />
     <result column="TYPE" jdbcType="DECIMAL" property="type" />
     <result column="GMT_CREATE" jdbcType="TIMESTAMP" property="gmtCreate" />

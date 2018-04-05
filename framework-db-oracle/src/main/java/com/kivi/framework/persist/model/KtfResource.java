@@ -1,6 +1,5 @@
 package com.kivi.framework.persist.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -8,8 +7,8 @@ import javax.persistence.*;
 public class KtfResource {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,yyyymmdd)||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
+    private Long id;
 
     @Column(name = "CODE")
     private String code;
@@ -30,22 +29,22 @@ public class KtfResource {
     private String url;
 
     @Column(name = "NUM")
-    private BigDecimal num;
+    private Integer num;
 
     @Column(name = "LEVELS")
-    private BigDecimal levels;
+    private Short levels;
 
     @Column(name = "IS_MENU")
-    private BigDecimal isMenu;
+    private Short isMenu;
 
     @Column(name = "TIPS")
     private String tips;
 
     @Column(name = "STATUS")
-    private BigDecimal status;
+    private Short status;
 
     @Column(name = "IS_OPEN")
-    private BigDecimal isOpen;
+    private Short isOpen;
 
     @Column(name = "GMT_CREATE")
     private Date gmtCreate;
@@ -56,14 +55,14 @@ public class KtfResource {
     /**
      * @return ID
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -154,42 +153,42 @@ public class KtfResource {
     /**
      * @return NUM
      */
-    public BigDecimal getNum() {
+    public Integer getNum() {
         return num;
     }
 
     /**
      * @param num
      */
-    public void setNum(BigDecimal num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
     /**
      * @return LEVELS
      */
-    public BigDecimal getLevels() {
+    public Short getLevels() {
         return levels;
     }
 
     /**
      * @param levels
      */
-    public void setLevels(BigDecimal levels) {
+    public void setLevels(Short levels) {
         this.levels = levels;
     }
 
     /**
      * @return IS_MENU
      */
-    public BigDecimal getIsMenu() {
+    public Short getIsMenu() {
         return isMenu;
     }
 
     /**
      * @param isMenu
      */
-    public void setIsMenu(BigDecimal isMenu) {
+    public void setIsMenu(Short isMenu) {
         this.isMenu = isMenu;
     }
 
@@ -210,28 +209,28 @@ public class KtfResource {
     /**
      * @return STATUS
      */
-    public BigDecimal getStatus() {
+    public Short getStatus() {
         return status;
     }
 
     /**
      * @param status
      */
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Short status) {
         this.status = status;
     }
 
     /**
      * @return IS_OPEN
      */
-    public BigDecimal getIsOpen() {
+    public Short getIsOpen() {
         return isOpen;
     }
 
     /**
      * @param isOpen
      */
-    public void setIsOpen(BigDecimal isOpen) {
+    public void setIsOpen(Short isOpen) {
         this.isOpen = isOpen;
     }
 

@@ -1,6 +1,5 @@
 package com.kivi.framework.persist.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -8,14 +7,14 @@ import javax.persistence.*;
 public class KtfDept {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,yyyymmdd)||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_KTF_COMMON.NEXTVAL AS ID FROM DUAL")
+    private Long id;
 
     @Column(name = "NUM")
-    private BigDecimal num;
+    private Integer num;
 
     @Column(name = "PID")
-    private BigDecimal pid;
+    private Long pid;
 
     @Column(name = "PIDS")
     private String pids;
@@ -36,47 +35,47 @@ public class KtfDept {
     private Date gmtUpdate;
 
     @Column(name = "VERSION")
-    private BigDecimal version;
+    private Integer version;
 
     /**
      * @return ID
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * @return NUM
      */
-    public BigDecimal getNum() {
+    public Integer getNum() {
         return num;
     }
 
     /**
      * @param num
      */
-    public void setNum(BigDecimal num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
     /**
      * @return PID
      */
-    public BigDecimal getPid() {
+    public Long getPid() {
         return pid;
     }
 
     /**
      * @param pid
      */
-    public void setPid(BigDecimal pid) {
+    public void setPid(Long pid) {
         this.pid = pid;
     }
 
@@ -167,14 +166,14 @@ public class KtfDept {
     /**
      * @return VERSION
      */
-    public BigDecimal getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
     /**
      * @param version
      */
-    public void setVersion(BigDecimal version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 }

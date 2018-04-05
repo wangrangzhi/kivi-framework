@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kivi.framework.persist.mapper.KtfErrorCodeMapperEx">
+  <resultMap id="BaseResultMap" type="com.kivi.framework.persist.model.KtfErrorCode">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="err_code" jdbcType="VARCHAR" property="errCode" />
+    <result column="err_alias" jdbcType="VARCHAR" property="errAlias" />
+    <result column="err_desc" jdbcType="VARCHAR" property="errDesc" />
+    <result column="err_tip" jdbcType="VARCHAR" property="errTip" />
+    <result column="err_group" jdbcType="VARCHAR" property="errGroup" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
+  </resultMap>
+  
+  <insert id="insertBatch" parameterType="java.util.List">
+      INSERT INTO KTF_ERROR_CODE
+		  (ID,ERR_CODE, ERR_ALIAS, ERR_DESC,ERR_TIP,ERR_GROUP,gmt_create,gmt_update)
+		   SELECT TO_CHAR(sysdate,'yyyymmdd')||SEQ_KTF_COMMON.NEXTVAL AS ID, A.*
+			FROM(
+			<foreach collection="list" item="item" index="index" separator="UNION ALL">
+			 SELECT 
+			        #{item.errCode,jdbcType=VARCHAR},
+					#{item.errAlias,jdbcType=VARCHAR},
+					#{item.errDesc,jdbcType=VARCHAR},
+					#{item.errTip,jdbcType=VARCHAR},
+					#{item.errGroup,jdbcType=VARCHAR},
+					#{item.gmtCreate,jdbcType=TIMESTAMP},
+					#{item.gmtUpdate,jdbcType=TIMESTAMP}
+			     FROM dual
+			   </foreach>
+			   )A
+  </insert>
+
+	
+</mapper>
